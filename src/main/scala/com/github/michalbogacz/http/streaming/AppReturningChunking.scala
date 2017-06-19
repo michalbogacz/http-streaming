@@ -22,7 +22,7 @@ object AppReturningChunking extends Directives {
 
   def main(args: Array[String]): Unit = {
     val mongoClient = MongoClients.create()
-    val coll = mongoClient.getDatabase("test").getCollection("test")
+    val coll = mongoClient.getDatabase("test").getCollection("resources")
 
     val route =
       path("resources") {
