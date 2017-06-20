@@ -41,11 +41,10 @@ object AppReturningChunking extends Directives {
 
   }
 
-  def getData(coll: MongoCollection[Document]): Source[ByteString, NotUsed] = {
+  def getData(coll: MongoCollection[Document]): Source[ByteString, NotUsed] =
     Source.fromPublisher(coll.find())
       .map(_.toJson)
       .map(ByteString(_))
       .intersperse(ByteString("["), ByteString(","), ByteString("]"))
-  }
 
 }
